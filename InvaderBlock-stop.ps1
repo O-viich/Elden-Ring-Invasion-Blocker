@@ -169,7 +169,7 @@ function InvaderBlock{
 
     if($mode -ne "stop"){
         try{
-            New-NetFirewallRule -DisplayName $ruleName -Program $steamPath -Direction Outbound -Protocol UDP -RemoteAddress $blacklist -Action Block
+            New-NetFirewallRule -DisplayName $ruleName -Program $steamPath -Direction Outbound -Protocol UDP -RemoteAddress $blacklist -Action Allow -EdgeTraversalPolicy Block -Authentication Required
         } catch [Exception]{
             #TO DO - Fix Error Handling
             Write-Output "Error creating firewall rule. Are you running the script as admin?"
